@@ -24,3 +24,7 @@ data
 
 printfn $"{answer}"
 0
+
+// notes
+// how to avoid some of the code duplication with the set iteration??
+// how to exit a iteration when using a 'iter' method

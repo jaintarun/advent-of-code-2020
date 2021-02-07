@@ -7,3 +7,7 @@ data
     | true -> printfn $"answer is: {(x * needed)}" 
     | _ -> ()
  )
+
+// notes
+// not optimal. Entire set is iterated 
+// questions.. what is the best way to exit a loop in functional code??.. recursive?? 
