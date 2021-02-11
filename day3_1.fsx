@@ -1,17 +1,30 @@
 open System.IO
 
 type CoordinateType =
-    | OpenSquare
+    | Open
     | Tree
 
-type GridRow = { Cells: CoordinateType[] }    
-type Grid = { Rows: GridRow[] }
+let parseLetterToCoordinateType (c: char) = 
+    match c with
+    | '.' -> Open
+    | '#' -> Tree
+    | _ -> failwith "a bug in the code!"
 
+let parseToGridRow (line: string) = 
+    line.ToCharArray() 
+        |> Array.map parseLetterToCoordinateType
 
-let parseData (line: string) = 
-    let z = line.Replace("-", " ").Replace(":", "").Split(" ")
-    { min= int z.[0]; max= int z.[1]; letter=char z.[2]; password= z.[3] }
+let getCoordinateType i gridRow : CoordinateType =
+    let newX = (i * 3) % Array.length gridRow
+    gridRow.[newX]    
+   
+let inputData = File.ReadLines("day_3_data.txt")  
+                |> Array.ofSeq 
+                |> Array.map parseToGridRow
 
-let data = File.ReadLines("day_3_data.txt") 
-            |> Array.ofSeq
-            |> Array.map parseData
+let answer = inputData 
+                |> Array.mapi getCoordinateType
+                |> Array.filter (fun element -> element = Tree)
+                |> Array.length
+
+printfn $"{answer}"
