@@ -18,7 +18,7 @@ let checkPasswordPolicy policy =
 
     charCount >= policy.min && charCount <= policy.max
 
-let data = File.ReadLines("day_2_1_data.txt") 
+let data = File.ReadLines("data\\day_2_data.txt") 
             |> Array.ofSeq
             |> Array.map parseData
             |> Array.filter checkPasswordPolicy

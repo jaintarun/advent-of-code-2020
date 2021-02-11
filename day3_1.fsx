@@ -18,7 +18,7 @@ let getCoordinateType i gridRow : CoordinateType =
     let newX = (i * 3) % Array.length gridRow
     gridRow.[newX]    
    
-let inputData = File.ReadLines("day_3_data.txt")  
+let inputData = File.ReadLines("data\\day_3_data.txt")  
                 |> Array.ofSeq 
                 |> Array.map parseToGridRow
 

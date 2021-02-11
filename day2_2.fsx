@@ -18,7 +18,7 @@ let checkNewPasswordPolicy policy =
 
 //let data = checkPasswordPolicy_new {min=1;max=3;letter='b';password="cdefg"}       
 
-let count = File.ReadLines("day_2_1_data.txt") 
+let count = File.ReadLines("data\\day_2_data.txt") 
             |> Array.ofSeq
             |> Array.map parseData
             |> Array.filter checkNewPasswordPolicy
